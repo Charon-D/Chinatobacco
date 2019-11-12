@@ -1,0 +1,65 @@
+package com.chinatobacco.controller;
+
+import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.chinatobacco.pojo.Location;
+import com.chinatobacco.service.LocationService;
+
+@Controller
+@RequestMapping("/location")
+public class LocationController {
+	Logger logger = Logger.getLogger(EntController.class);
+	@Autowired
+	private LocationService locationService;
+	
+	@RequestMapping("/list")
+	public String list(Model model){
+		List<Location> list=locationService.selectAll();
+		model.addAttribute("list", list);
+		return "showlocation";
+	}
+	@RequestMapping("/toadd")
+	public String toadd() {
+		return "addlocation";
+	}
+
+	@RequestMapping(value = "/add")
+	public String add(Location location) {
+		boolean flag = locationService.add(location);
+		if (flag) {
+			return "redirect:list.do";
+		}
+		return "404";
+	}
+	@RequestMapping("/delete")
+	public String delete(int locid) {
+		boolean flag = locationService.delete(locid);
+		if (flag) {
+			return "redirect:list.do";
+		}
+		return "404";
+	}
+
+	@RequestMapping("/toupdate")
+	public String toupdate(String locid,String entid,String shelfid,Model model) {
+		model.addAttribute("locid", locid);
+		model.addAttribute("entid", entid);
+		model.addAttribute("shelfid", shelfid);
+		return "updatelocation";
+	}
+
+	@RequestMapping("/update")
+	public String update(Location location) {
+		boolean flag = locationService.update(location);
+		if (flag) {
+			return "redirect:list.do";
+		}
+		return "404";
+	}
+}

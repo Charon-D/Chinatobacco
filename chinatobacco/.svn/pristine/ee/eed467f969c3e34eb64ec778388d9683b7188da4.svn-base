@@ -1,0 +1,4 @@
+driver=com.mysql.jdbc.Driver
+url=jdbc:mysql://172.3.21.6:3306/china_tobacco
+username=root
+password=root

@@ -1,0 +1,32 @@
+package test.service;
+
+import java.util.List;
+
+import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.chinatobacco.pojo.Moneylist;
+import com.chinatobacco.service.MoneylistService;
+
+/**
+ * @author Castle
+ * @category 财务流水表业务逻辑测试
+ */
+public class MoneylistServiceTest {
+	@Test
+	public void test(){
+		ApplicationContext context = new ClassPathXmlApplicationContext("spring/spring.xml");
+		
+		MoneylistService service =context.getBean(MoneylistService.class);
+		
+		List<Moneylist> list = service.selectAll();
+		System.err.println(list.size());
+		
+		for(Moneylist moneylist:list){
+			System.err.println(moneylist.getDirection());
+		}
+
+	}
+
+}

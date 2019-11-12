@@ -1,0 +1,31 @@
+package test.service;
+
+import java.util.List;
+
+import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.chinatobacco.pojo.Account;
+import com.chinatobacco.service.AccountService;
+
+/**
+ * @author Davi
+ * @category 账户业务逻辑测试
+ */
+public class AccountServiceTest {
+	@Test
+	public void test() {
+		ApplicationContext context = new ClassPathXmlApplicationContext("spring/spring.xml");
+
+		AccountService service = context.getBean(AccountService.class);
+
+		List<Account> list = service.selectAll();
+		System.err.println(list.size());
+
+		for (Account account : list) {
+			System.err.println(account.getBalance());
+		}
+	}
+
+}

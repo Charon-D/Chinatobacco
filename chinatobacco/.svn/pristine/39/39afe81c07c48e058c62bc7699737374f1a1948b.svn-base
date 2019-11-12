@@ -1,0 +1,28 @@
+package test.service;
+
+import java.util.List;
+
+import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.chinatobacco.pojo.Indent;
+import com.chinatobacco.service.IndentService;
+
+public class IndentServiceTest {
+	ApplicationContext context = new ClassPathXmlApplicationContext("spring/spring.xml");
+	IndentService service = context.getBean(IndentService.class);
+
+	@Test
+	public void test() {
+		// List<Indent> list = service.selectAll();
+		// System.out.println(list);
+		// for (Indent indent : list) {
+		// System.out.println(indent.getIndentid() + "\t" +
+		// indent.getStore().getStorename());
+		// }
+		
+		
+
+	}
+}

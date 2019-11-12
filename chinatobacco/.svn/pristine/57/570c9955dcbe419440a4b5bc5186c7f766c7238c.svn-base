@@ -1,0 +1,30 @@
+package test.service;
+
+import java.util.List;
+
+import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.chinatobacco.pojo.Role;
+import com.chinatobacco.service.RoleService;
+/**
+ * @author Castle
+ * @category 角色的业务逻辑接口测试
+ */
+public class RoleServiceTest {
+	@Test
+	public void test(){
+		ApplicationContext context = new ClassPathXmlApplicationContext("spring/spring.xml");
+
+		RoleService service=context.getBean(RoleService.class);
+		
+		List<Role> list=service.selectAll();
+		System.out.println(list.size());
+		
+		for (Role role : list) {
+			System.out.println(role.getCommoditymanage());
+		}
+	}
+	
+}

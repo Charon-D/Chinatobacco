@@ -1,0 +1,52 @@
+//页面加载就将省分加载出来
+$(function() {
+	$.post("./pcc/pfind.do", {}, function(result) {
+		console.log(result);
+		var html = "<option value='0'>-prov-</option>";
+		// 将集合遍历到一个html字符串中
+		$.each(result.list, function(i, data) {
+			html += "<option value='" + data.provinceID + "'>" + data.province
+					+ "</option>";
+		});
+		// 将html放入到页面里面
+		console.log(12);
+		console.log(html);
+		$("#provincedId").html(html);
+	}, "json");
+});
+// 显示出所有的市
+function showCity(provincedId) {
+	$.post("./pcc/cfind.do", {
+		provinceId : provincedId
+	}, function(result) {
+		console.log(result);
+		var html = "<option value='0'>-city-</option>";
+		$.each(result.list, function(i, data) {
+			html += "<option value='" + data.cityID + "'>" + data.city
+					+ "</option>";
+
+		});
+		// 将html放入到页面里面
+		console.log("市id");
+		console.log(html);
+		$("#cityId").html(html);
+	}, "json");
+	showArea(0);
+}
+function showArea(cityID) {
+	$.post("./pcc/cofind.do", {
+		cityID : cityID
+	}, function(result) {
+		console.log(result);
+		var html = "<option value='0'>-city-</option>";
+		$.each(result.list, function(i, data) {
+			html += "<option value='" + data.areaID + "'>" + data.city
+					+ "</option>";
+
+		});
+		// 将html放入到页面里面
+		console.log("市id");
+		console.log(html);
+		$("#cityID").html(html);
+	}, "json");
+}

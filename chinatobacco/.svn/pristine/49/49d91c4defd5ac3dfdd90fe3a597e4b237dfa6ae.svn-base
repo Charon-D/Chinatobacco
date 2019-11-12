@@ -1,0 +1,52 @@
+package com.chinatobacco.controller;
+
+
+import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.chinatobacco.pojo.Ent;
+import com.chinatobacco.service.EntService;
+
+@Controller
+@RequestMapping("/ent")
+public class EntController {
+	Logger logger = Logger.getLogger(StoreController.class);
+	@Autowired
+	private EntService entService;
+	
+	@RequestMapping("/list")
+	public String list(Model model){
+		List<Ent> list= entService.selectAll();
+		model.addAttribute("list", list);
+		return "showent";
+	}
+	@RequestMapping("/add")
+	public String add(Ent ent){
+		boolean flag= entService.add(ent);
+		if (flag) {
+			return "showent";
+		}
+		return "404";
+	}
+	@RequestMapping("/delete")
+	public String delete(int entid){
+		boolean flag=entService.delete(entid);
+		if (flag) {
+			return "showent";
+		}
+		return "404";
+	}
+	@RequestMapping("/update")
+	public String update(Ent ent){
+		boolean flag=entService.updaet(ent);
+		if (flag) {
+			return "showent";
+		}
+		return "404";
+	}
+}

@@ -1,0 +1,40 @@
+function fun() {
+	var a = $(":checked").parents("td").parents("tr")
+	var com = []
+	var b = [];
+	$.each(a,
+			function(index) {
+				com[index] = a.eq(index).children("td").eq(0).find(
+						"input:first").val();
+				b[index] = a.eq(index).children("td").eq(3).find("input:first")
+						.val();
+				console.log(b[index]);
+				console.log(a.eq(index).children("td").eq(0)
+						.find("input:first").val());
+			});
+
+	$.ajax({
+		type : "post",
+		url : "./indent/add.do",
+		contentType : "application/json; charset=utf-8",
+		data : {
+			"cid" : JSON.stringify(com),
+			"num " : JSON.stringify(b)
+		},
+		traditional : true,
+		success : function(result) {
+			alert(1)
+		}
+	});
+
+	/*
+	 * $.post("./indent/add.do", { "comid" : JSON.stringify(com), "spnum "
+	 * :JSON.stringify(b) }, function() { console.log("进入ajax"); },
+	 * "application");
+	 */
+
+	/*
+	 * data : JSON.stringify(com), data : JSON.stringify(b) dataType:"json",
+	 * contentType:"application/json",
+	 */
+}

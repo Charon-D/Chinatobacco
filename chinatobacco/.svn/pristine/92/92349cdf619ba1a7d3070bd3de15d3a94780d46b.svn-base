@@ -1,0 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<link href="statics/css/wei.css" rel="stylesheet">
+</head>
+<body>
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center section-intro">
+					<hr />
+					<h2>
+						<img src="../imgs/china-tobacco-log.jpg" />
+					</h2>
+					The home of tobacco <a href="" target="_blank" title="烟草之家">烟草之家</a>
+					- Tobacco BBS <a href="" title="网页模板" target="_blank">烟草论坛</a> <a
+						href="#" class="btn-social btn-twitter btn-sm"><i
+						class="tn-twitter"></i></a> <a href="#"
+						class="btn-social btn-facebook btn-sm"><i class="tn-facebook"></i></a>
+					<a href="#" class="btn-social btn-google-plus btn-sm"><i
+						class="tn-google"></i></a> <a href="#"
+						class="btn-social btn-vimeo btn-sm"><i class="tn-vimeo"></i></a> <a
+						href="#" class="btn-social btn-dropbox btn-sm"><i
+						class="tn-dropbox"></i></a>
+				</div>
+			</div>
+		</div>
+		<br /> <br />
+	</footer>
+
+</body>
+</html>
